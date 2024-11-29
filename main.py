@@ -2,7 +2,6 @@ from twikit import Client, TooManyRequests
 import time
 from datetime import datetime
 import csv
-from configparser import ConfigParser
 from random import randint
 import asyncio
 
@@ -22,11 +21,7 @@ async def main():
             tweets = await tweets.next()
         return tweets
 
-    config = ConfigParser()
-    config.read('config.ini')
-    username = config['X']['username']
-    password = config['X']['password']
-    email = config['X']['email']
+
 
     # csv file to store the tweets
     with open('output.csv', 'w', newline='', encoding='utf-8') as file:
@@ -35,9 +30,7 @@ async def main():
 
     client = Client(language='en-US')
 
-    # Login and retrieve cookie
-    # await client.login(auth_info_1=username, auth_info_2=email, password=password)
-    # client.save_cookies('cookies.json')
+
 
     # alternatively, load a saved cookie
     client.load_cookies('cookies.json')
