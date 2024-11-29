@@ -9,7 +9,7 @@ import asyncio
 
 async def main():
     MINIMUM_TWEETS = 50
-    QUERY = 'coding'
+    QUERY = 'ai advancements'
 
     async def get_tweets(tweets):
         if tweets is None:
@@ -31,7 +31,7 @@ async def main():
     # csv file to store the tweets
     with open('output.csv', 'w', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
-        writer.writerow(['No.', 'Name', 'Text', 'Full Text', 'Created At', 'Retweets', 'Likes'])
+        writer.writerow(['No.', 'Name', 'Full Text', 'Created At', 'Retweets', 'Likes'])
 
     client = Client(language='en-US')
 
@@ -62,8 +62,8 @@ async def main():
 
         for tweet in tweets:
             tweet_count += 1
-            tweet_data = [tweet_count, tweet.user.name, tweet.text, tweet.full_text, tweet.created_at,
-                          tweet.retweet_cout, tweet.favorite_count]
+            tweet_data = [tweet_count, tweet.user.name, tweet.full_text, tweet.created_at,
+                          tweet.retweet_count, tweet.favorite_count]
             # print(tweet_data)
             with open('output.csv', 'a', newline='', encoding='utf-8') as file:
                 writer = csv.writer(file)
